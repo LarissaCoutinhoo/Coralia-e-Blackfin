@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coralia e Blackfin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body style="display: flex; flex-direction: column; align-items: center;">
+
+    <h1>Coralia vs Capitão Blackfin - Uma Batalha Épica Sob as Ondas!</h1>
+
+    <div id="app" style="margin-top: 20px;">
+        <div class="personagens-container">
+            <div class="personagem">
+                <div class="barra-vida" :style="{width: heroi.vida + '%'}">{{ heroi.vida }}</div>
+                <div class="sprite"><img src="img/heroi.jpeg" alt=""></div>
+                <h1>Coralia</h1>
+                <div class="acoes">
+                    <button @click="atacar(true)">Atacar</button>
+                    <button @click="defender()">Defender</button>
+                    <button @click="usarPocao()">Usar Poção</button>
+                    <button @click="correr()">Correr</button>
+                </div>
+            </div>
+            <div class="personagem vilao">
+                <div class="barra-vida" :style="{width: vilao.vida + '%'}">{{ vilao.vida }}</div>
+                <div class="sprite"><img src="img/vilão.jpeg" alt=""></div>
+                <h1> Blackfin</h1>
+                <div class="acoes">
+                    <button @click="vilaoAtacar()">Atacar</button>
+                    <button @click="vilaoDefender()">Defender</button>
+                    <button @click="usarPocao()">Usar Poção</button>
+                    <button @click="correr()">Correr</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="logs">
+            <h2>Logs do jogo</h2>
+            <ul>
+                <li v-for="log in logsHeroi">{{ log }}</li>
+            </ul>
+        </div>
+
+        <div v-if="gameOver" class="resultado">
+            <h2>Fim!</h2>
+            <p><span class="resultado">{{ winner }}</span> venceu.</p>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>
